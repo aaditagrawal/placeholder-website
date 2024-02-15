@@ -3,14 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maverick's Website</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <title>Matrix Rain</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <p>This website belongs to</p>
-        <h1>Maverick</h1>
-    </div>
+    <div id="matrix-rain-container"></div>
+
+    <script>
+        const characters = ['1', '0']; // Matrix-style characters
+        const matrixRainContainer = document.getElementById('matrix-rain-container');
+
+        function createCharacter() {
+            const character = document.createElement('div');
+            character.classList.add('matrix-rain');
+            character.textContent = characters[Math.floor(Math.random() * characters.length)];
+            // Start from the top at random horizontal positions
+            character.style.top = '-5%';
+            character.style.left = Math.random() * 100 + 'vw';
+            matrixRainContainer.appendChild(character);
+
+            // Adjust speed randomly for more variability
+            character.style.animationDuration = Math.random() * 5 + 3 + 's'; // Between 3 and 8 seconds
+
+            // Remove character after it has fallen to avoid memory leaks
+            character.addEventListener('animationend', () => {
+                character.remove();
+            });
+        }
+
+        // Create a new character every 100 milliseconds for a dense rain effect
+        setInterval(createCharacter, 100);
+    </script>
 </body>
 </html>
