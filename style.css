@@ -3,46 +3,31 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background: #0f0f0f; /* Dark background */
-    font-family: 'Space Grotesk', sans-serif;
-    color: #ffffff; /* White text for contrast */
+    overflow: hidden; /* Prevents scrollbar from appearing */
 }
 
-.container {
-    text-align: center;
-    padding: 50px; /* Uniform padding for equal spacing */
-    background: #1e1e1e; /* Slightly lighter dark shade for the container */
-    border-radius: 15px; /* Softened corners for a modern look */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    max-width: 600px; /* Fixed max width for better control over the container size */
-    margin: auto; /* Centers the container horizontally */
+#matrix-rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through */
 }
 
-h1 {
-    font-size: 60px; /* Larger size for Maverick to emphasize minimalism */
-    color: #ffffff; /* White color for high contrast */
-    margin: 20px 0; /* Reduced margin for a balanced look */
+.matrix-rain {
+    position: absolute;
+    color: #0f0; /* Matrix-style green */
+    font-size: 18px; /* Adjust font size as needed */
+    animation: fallDown 5s linear infinite;
 }
 
-p {
-    font-size: 28px; /* Slightly larger for readability */
-    color: #a9a9a9; /* Lighter grey for subtle contrast */
-    margin: 20px 0; /* Uniform margin for a cohesive look */
-}
-
-@media (max-width: 768px) {
-    .container {
-        padding: 30px; /* Adjusted padding for smaller screens */
+@keyframes fallDown {
+    from {
+        transform: translateY(-100%);
     }
-    h1 {
-        font-size: 40px; /* Adjusted for mobile devices */
-        margin: 15px 0; /* Reduced margin for smaller screens */
-    }
-    p {
-        font-size: 20px; /* Adjusted for mobile devices */
-        margin: 15px 0; /* Reduced margin for smaller screens */
+    to {
+        transform: translateY(100vh);
     }
 }
